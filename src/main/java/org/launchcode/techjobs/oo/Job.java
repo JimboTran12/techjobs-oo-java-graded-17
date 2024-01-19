@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import java.lang.reflect.Field;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -20,6 +21,7 @@ public class Job {
     public Job() {
         this.id = nextId;
         nextId++;
+        this.name = "none";
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
@@ -95,4 +97,31 @@ public class Job {
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
+
+    @Override
+    public String toString() {
+        String out = "";
+
+
+        if (!name.equals("none")) {
+            out += String.format(System.lineSeparator() + "ID: %s\n" +
+                    "Name: %s\n" +
+                    "Employer: %s\n" +
+                    "Location: %s\n" +
+                    "Position Type: %s\n" +
+                    "Core Competency: %s" + System.lineSeparator(), id, name, employer.getValue(), location.getValue(), positionType.getValue(), coreCompetency.getValue());
+            return out;
+        }
+        else {
+            out += String.format(System.lineSeparator() + "ID: %d\n" +
+                    "Name: Data not available\n" +
+                    "Employer: Data not available\n" +
+                    "Location: Data not available\n" +
+                    "Position Type: Data not available\n" +
+                    "Core Competency: Data not available" + System.lineSeparator(), id);
+            return out;
+        }
+    }
+
+
 }
