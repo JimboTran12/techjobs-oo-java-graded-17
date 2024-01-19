@@ -21,7 +21,6 @@ public class Job {
     public Job() {
         this.id = nextId;
         nextId++;
-        this.name = "none";
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
@@ -100,27 +99,53 @@ public class Job {
 
     @Override
     public String toString() {
+        String aName;
+        String aLocation;
+        String aCoreCompetency;
+        String aPositionType;
+        String aEmployer;
         String out = "";
-
-
-        if (!name.equals("none")) {
-            out += String.format(System.lineSeparator() + "ID: %s\n" +
-                    "Name: %s\n" +
-                    "Employer: %s\n" +
-                    "Location: %s\n" +
-                    "Position Type: %s\n" +
-                    "Core Competency: %s" + System.lineSeparator(), id, name, employer.getValue(), location.getValue(), positionType.getValue(), coreCompetency.getValue());
-            return out;
+        if (this.name == null || name.isEmpty()) {
+            aName = "Data not available";
         }
         else {
-            out += String.format(System.lineSeparator() + "ID: %d\n" +
-                    "Name: Data not available\n" +
-                    "Employer: Data not available\n" +
-                    "Location: Data not available\n" +
-                    "Position Type: Data not available\n" +
-                    "Core Competency: Data not available" + System.lineSeparator(), id);
-            return out;
+            aName = name;
         }
+        if (this.location == null || location.getValue().isEmpty()) {
+            aLocation = "Data not available";
+        }
+        else {
+            aLocation = location.getValue();
+        }
+        if (this.employer == null || employer.getValue().isEmpty()) {
+            aEmployer = "Data not available";
+        }
+        else {
+            aEmployer = employer.getValue();
+        }
+        if (this.positionType == null || positionType.getValue().isEmpty()) {
+            aPositionType = "Data not available";
+        }
+        else {
+            aPositionType = positionType.getValue();
+        }
+        if (this.coreCompetency == null || coreCompetency.getValue().isEmpty()) {
+            aCoreCompetency = "Data not available";
+        }
+        else {
+            aCoreCompetency = coreCompetency.getValue();
+        }
+
+
+        out += String.format(System.lineSeparator() + "ID: %s\n" +
+                "Name: %s\n" +
+                "Employer: %s\n" +
+                "Location: %s\n" +
+                "Position Type: %s\n" +
+                "Core Competency: %s" + System.lineSeparator(), id, aName, aEmployer, aLocation, aPositionType, aCoreCompetency);
+            return out;
+
+
     }
 
 

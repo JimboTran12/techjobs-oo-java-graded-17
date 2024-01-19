@@ -14,6 +14,7 @@ public abstract class JobField {
     public JobField() {
         this.id = nextId;
         nextId++;
+        this.value = "";
     }
 
     @Override
